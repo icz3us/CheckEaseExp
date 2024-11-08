@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h1>TANGINAAA</h1>
 
     <div class="container d-flex flex-column align-items-center">
       <div class="welcome-section text-center">
