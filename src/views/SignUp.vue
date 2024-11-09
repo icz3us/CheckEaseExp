@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="container-fluid p-0 ">
+  <div id="app" class="container-fluid p-0">
     <div class="background-container">
       <div class="square" v-for="n in 26" :key="n" :class="'square-' + n"></div>
     </div>
@@ -7,7 +7,7 @@
     <div class="container position-absolute top-50 start-50 translate-middle">
       <div class="row min-vh-100 justify-content-center align-items-center">
         <!-- Information Section -->
-        <div class="col-md-6 col-lg-5 d-flex flex-column justify-content-center align-items-center text-center mb-md-0 mb-5">
+        <div class="col-md-6 col-lg-5 d-flex flex-column justify-content-center align-items-center text-center mb-md-0 mb-5" v-if="showInfoSection">
           <div class="mb-5">
             <div class="logo-container mb-4">
               <img src="/public/images/checkEaseLogo.png" alt="logo here" class="img-fluid" style="max-width: 100%; height: auto;" />
@@ -25,7 +25,7 @@
         </div>
 
         <!-- Signup Form Section -->
-        <div class="col-md-6 col-lg-6 d-flex justify-content-center align-items-center mb-5">
+        <div class="col-12 col-md-6 col-lg-6 d-flex justify-content-center align-items-center mb-5">
           <div class="box-container" style="max-width: 600px;">
             <h1 class="text-center mt-4"><b>Sign up</b></h1>
             <p class="text-center text-secondary">
@@ -44,6 +44,10 @@
                   <label for="lastname" class="form-label">Last name</label>
                   <input type="text" id="lastname" v-model="lastname" class="form-control" required>
                 </div>
+              </div>
+              <div class="mb-2">
+                <label for="username" class="form-label">Username</label>
+                <input type="uername" id="username" v-model="username" class="form-control" required>
               </div>
 
               <div class="mb-2">
@@ -85,10 +89,21 @@ export default {
       lastname: '',
       email: '',
       password: '',
-      role: ''
+      role: '',
+      showInfoSection: true
     };
   },
+  mounted() {
+    this.checkScreenSize();
+    window.addEventListener('resize', this.checkScreenSize);
+  },
+  beforeUnmount() {
+    window.removeEventListener('resize', this.checkScreenSize);
+  },
   methods: {
+    checkScreenSize() {
+      this.showInfoSection = window.innerWidth >= 768; // Show info section on screens larger than 768px (medium)
+    },
     async submitForm() {
       try {
         const response = await axios.post('http://localhost/vue-login-backend/signup.php', {
