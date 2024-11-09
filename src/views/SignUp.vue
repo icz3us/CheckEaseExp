@@ -88,6 +88,7 @@ export default {
       firstname: '',
       lastname: '',
       email: '',
+      username: '',
       password: '',
       role: '',
       showInfoSection: true
@@ -109,6 +110,7 @@ export default {
         const response = await axios.post('http://localhost/vue-login-backend/signup.php', {
           firstname: this.firstname,
           lastname: this.lastname,
+          username: this.username,
           email: this.email,
           password: this.password,
           role: this.role
