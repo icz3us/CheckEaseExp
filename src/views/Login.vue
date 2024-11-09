@@ -1,34 +1,32 @@
 <template>
   <div id="app">
-    
     <div class="background-container">
       <div class="square" v-for="n in 26" :key="n" :class="'square-' + n"></div>
     </div>
 
-   
-    <div class="container d-flex flex-column align-items-center py-5" style="margin-left: 250px">
-      <!-- Logo Section -->
-      <div class="mb-4">
-        <img src="/public/images/checkEaseLogo.png" alt="logo here" style="width: 415px; height: 125px;" />
-      </div>
+    <div class="container d-flex justify-content-center align-items-center min-vh-1000 position-absolute top-50 start-50 translate-middle">
+      <div class="box-container w-100 " style="max-width: 400px;">
+        <!-- Logo Section -->
+        <div class="mb-4 text-center">
+          <img src="/public/images/checkEaseLogo.png" alt="logo here" class="img-fluid" style="max-width: 100%; height: auto;" />
+        </div>
 
-      <!-- Form Section -->
-      <div class="box-container" style="width: 400px;">
+        <!-- Form Section -->
         <form @submit.prevent="submitForm">
-          <h2 class="text-start"><b>Log in to your account.</b></h2>
-          <p class="text-secondary text-start mb-4">
+          <h2 class="text-center"><b>Log in to your account.</b></h2>
+          <p class="text-secondary text-center mb-4">
             New to Check Ease?
             <router-link to="/signup" class="text-decoration-none">Sign up!</router-link>
           </p>
 
           <!-- Email Input -->
-          <div class="mb-3 text-start">
+          <div class="mb-3">
             <label for="email" class="form-label">Email or Username</label>
             <input type="text" id="email" v-model="email" class="form-control" required />
           </div>
 
           <!-- Password Input -->
-          <div class="mb-3 text-start">
+          <div class="mb-3">
             <label for="password" class="form-label">Password</label>
             <input type="password" id="password" v-model="password" class="form-control" required />
           </div>
@@ -90,29 +88,21 @@ export default {
 };
 </script>
 
-
-
-
 <style scoped>
 .background-container {
   position: fixed;
   z-index: -1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
-/* Modified content styles */
 .box-container {
   background-color: white;
   border-radius: 8px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   padding: 2rem;
-}
-
-.logo-container {
-  position: fixed; 
-  top: 80px; 
-  left: 50%; 
-  transform: translateX(-50%); 
-  z-index: 10; 
 }
 
 .btn-primary {
@@ -127,24 +117,6 @@ export default {
 .form-control:focus {
   box-shadow: none;
   border-color: #0a58ca;
-}
-
-.square {
-  position: absolute;
-  width: 50px;
-  height: 50px;
-  background-color: #0077b6;
-  opacity: 0.8;
-  border-radius: 10%;
-}
-
-.background-container {
-  position: fixed; 
-  z-index: -1; 
-  top: 0;
-  left: 0;
-  width: 100%; 
-  height: 100%; 
 }
 
 .square {
