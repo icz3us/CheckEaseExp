@@ -1,75 +1,73 @@
 <template>
-  <div id="app" class="container">
+  <div id="app" class="container-fluid p-0 ">
     <div class="background-container">
       <div class="square" v-for="n in 26" :key="n" :class="'square-' + n"></div>
     </div>
 
-    <div class="row mt-5">
-      <!-- Information Section -->
-      <div class="col-md-6 col-lg-5 d-flex flex-column justify-content-center align-items-center text-center"
-        style="margin-left: -100px;">
-        <div class="mb-5">
-          <div class="logo-container mb-4">
-            <img src="/public/images/checkEaseLogo.png" alt="logo here" style="width: 415px; height: 125px;"
-              class="mt-n5 mh-125px mw-425px">
+    <div class="container position-absolute top-50 start-50 translate-middle">
+      <div class="row min-vh-100 justify-content-center align-items-center">
+        <!-- Information Section -->
+        <div class="col-md-6 col-lg-5 d-flex flex-column justify-content-center align-items-center text-center mb-md-0 mb-5">
+          <div class="mb-5">
+            <div class="logo-container mb-4">
+              <img src="/public/images/checkEaseLogo.png" alt="logo here" class="img-fluid" style="max-width: 100%; height: auto;" />
+            </div>
+            <h1>What is Check Ease?</h1>
+            <p>
+              A web application that simplifies the process of managing and viewing attendance and clearance records.
+              It allows students to easily track their attendance and clearance status, while faculty and/or student
+              organizations can update these records.
+            </p>
+            <p class="text-secondary">
+              <a href="#" class="text-decoration-none">About the developers?</a>
+            </p>
           </div>
-          <h1>What is Check Ease?</h1>
-          <p>
-            A web application that simplifies the process of managing and viewing attendance and clearance records.
-            It allows students to easily track their attendance and clearance status, while faculty and/or student
-            organizations can update these records.
-          </p>
-          <p class="text-secondary">
-            <a href="#" class="text-decoration-none">About the developers?</a>
-          </p>
         </div>
-      </div>
 
-      <!-- Signup Form Section -->
-      <div class="col-md-6 col-lg-7 d-flex justify-content-center align-items-center"
-        style="margin-left: 450px;  margin-top: -500px;">
+        <!-- Signup Form Section -->
+        <div class="col-md-6 col-lg-6 d-flex justify-content-center align-items-center mb-5">
+          <div class="box-container" style="max-width: 600px;">
+            <h1 class="text-center mt-4"><b>Sign up</b></h1>
+            <p class="text-center text-secondary">
+              Already have an account?
+              <router-link to="/login" class="text-decoration-none">Click here to Log in!</router-link>
+            </p>
 
-        <div class="box-container col-12 mb-5">
-          <h1 class="text-start mt-4"><b>Sign up</b></h1>
-          <p class="text-start text-secondary">
-            Already have an account?
-            <router-link to="/login" class="text-decoration-none">Click here to Log in!</router-link>
-          </p>
+            <form @submit.prevent="submitForm" class="px-3 py-2">
+              <div class="row">
+                <div class="col-md-6 mb-2">
+                  <label for="firstname" class="form-label">First name</label>
+                  <input type="text" id="firstname" v-model="firstname" class="form-control" required>
+                </div>
 
-          <form @submit.prevent="submitForm" class="align-items-center w-100">
-            <div class="row">
-              <div class="col-md-6 mb-2">
-                <label for="firstname" class="form-label">First name</label>
-                <input type="text" id="firstname" v-model="firstname" class="form-control" required>
+                <div class="col-md-6 mb-2">
+                  <label for="lastname" class="form-label">Last name</label>
+                  <input type="text" id="lastname" v-model="lastname" class="form-control" required>
+                </div>
               </div>
 
-              <div class="col-md-6 mb-2">
-                <label for="lastname" class="form-label">Last name</label>
-                <input type="text" id="lastname" v-model="lastname" class="form-control" required>
+              <div class="mb-2">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" id="email" v-model="email" class="form-control" required>
               </div>
-            </div>
 
-            <div class="mb-2 text-start">
-              <label for="email" class="form-label">Email</label>
-              <input type="email" id="email" v-model="email" class="form-control" required>
-            </div>
+              <div class="mb-2">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" id="password" v-model="password" class="form-control" required>
+              </div>
 
-            <div class="mb-2 text-start">
-              <label for="password" class="form-label">Password</label>
-              <input type="password" id="password" v-model="password" class="form-control" required>
-            </div>
+              <div class="mb-3">
+                <label for="role" class="form-label">Role</label>
+                <select id="role" v-model="role" class="form-select" required>
+                  <option value="" disabled selected>Select your role</option>
+                  <option value="student">Student</option>
+                  <option value="teacher">Teacher</option>
+                </select>
+              </div>
 
-            <div class="mb-3 text-start">
-              <label for="role" class="form-label">Role</label>
-              <select id="role" v-model="role" class="form-select" required>
-                <option value="" disabled selected>Select your role</option>
-                <option value="student">Student</option>
-                <option value="teacher">Teacher</option>
-              </select>
-            </div>
-
-            <button type="submit" class="btn btn-primary w-100">Sign Up</button>
-          </form>
+              <button type="submit" class="btn btn-primary w-100 mb-3">Sign Up</button>
+            </form>
+          </div>
         </div>
       </div>
     </div>
@@ -101,7 +99,7 @@ export default {
           role: this.role
         });
 
-        const result = response.data;
+        const result = response .data;
 
         if (result.success) {
           // Redirect to login page after successful signup
@@ -119,14 +117,10 @@ export default {
 };
 </script>
 
-
 <style scoped>
 body {
   font-family: 'Outfit', sans-serif;
   min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .box-container {
@@ -134,7 +128,7 @@ body {
   border-radius: 8px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   padding: 20px;
-  width: 600px; 
+  width: 100%; 
 }
 
 .background-container {
