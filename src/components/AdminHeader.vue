@@ -1,10 +1,10 @@
 <template>
-  <div class="header-container position-flex top-0 end-30 fixed-top" style="margin-left: 250px;">
+  <div class="header-container position-flex top-0 end-30 fixed-top" style="margin-left: 15px;">
     <!-- Main Card Header -->
     <div class="card header-card">
       <div class="card-body d-flex align-items-center justify-content-between">
         <!-- Dashboard Title -->
-        <h3 class="card-title mb-0">{{cardTitle}}</h3>
+        <h3 class="card-title mb-0 d-none d-sm-block">{{ cardTitle }}</h3> 
 
         <!-- Profile Section -->
         <div class="profile-section d-flex align-items-center">
@@ -37,7 +37,7 @@
           <div class="user-info d-flex align-items-center">
             <i class="material-icons">account_circle</i>
             <div class="ms-2">
-              <strong>L.Name, Fname M.I.</strong><br>
+              <strong>L.Name, Fname M.I.</strong><br />
               <small>202xxxxxx@yourdomain.edu.ph</small>
             </div>
           </div>
@@ -49,7 +49,7 @@
 
 <script>
 export default {
-  name: "AdminHeader",
+  name: 'AdminHeader',
   computed: {
     cardTitle() {
       switch (this.$route.path) {
@@ -87,12 +87,12 @@ export default {
 <style scoped>
 .header-container {
   padding: 10px 20px;
-  width: 1308px; 
-  height: 124px; 
+  width: 100%;
+  height: 124px;
 }
 
 .header-card {
-  background-color: #DBF4F8;
+  background-color: #dbf4f8;
   border-radius: 15px;
   width: 100%;
   height: 100%;
@@ -128,5 +128,34 @@ export default {
   font-size: 36px;
   color: black;
   margin-right: 8px;
+}
+
+@media (max-width: 576px) {
+  .card-title {
+    display: none; 
+  }
+
+  .profile-section {
+    font-size: 14px; 
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .user-info {
+    font-size: 12px;
+    margin-top: 8px; 
+  }
+
+  .material-icons {
+    font-size: 18px; 
+  }
+
+  .profile-section i.material-icons {
+    font-size: 18px; 
+  }
+
+  .user-info i.material-icons {
+    font-size: 28px; 
+  }
 }
 </style>
