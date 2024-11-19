@@ -90,25 +90,24 @@ span {
   font-weight: bold;
 }
 
-/* Responsive: Profile Circle on Small Screens */
 @media (max-width: 576px) {
   .account-info {
     height: 50px; 
-    width: 50px; /* Circle size */
-    border-radius: 50%; /* Makes it a circle */
-    padding: 0; /* Remove padding */
+    width: 50px; 
+    border-radius: 50%; 
+    padding: 0; 
     justify-content: center;
-    align-items: center; /* Center content */
-    text-align: center; /* Center text if any */
+    align-items: center; 
+    text-align: center; 
   }
 
   .account-info span {
-    display: none; /* Hide the text */
+    display: none;
   }
 
   .account-info::before {
-    content: "👤"; /* You can use an emoji or a placeholder image here */
-    font-size: 2rem; /* Size of the icon */
+    content: "👤";
+    font-size: 2rem; 
   }
 }
 </style>
