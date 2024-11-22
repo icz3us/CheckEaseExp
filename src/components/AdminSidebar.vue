@@ -1,10 +1,11 @@
+Richard Del Carmen Jr.
 <template>
-  <div>
+  <div class=" postion-fixed">
     <!-- Hamburger Icon for Mobile -->
     <button
       class="btn d-md-none"
       @click="toggleSidebar"
-      style="position: fixed; top: 10px; left: 10px; z-index: 1000; background: none; border: none; padding: 0;"
+      style="position: fixed; top: 10px; left: 10px; z-index: 1001; background: none; border: none; padding: 0;"
     >
       <i class="material-icons" style="color: black;">menu</i>
     </button>
@@ -64,9 +65,9 @@
             </li>
             <li>
               <router-link
-                to="/view-student-attendance"
+                to="/ViewStudentAttendance"
                 class="sidebar-sub-item"
-                :class="{ active: isActive('/view-student-attendance') }"
+                :class="{ active: isActive('/ViewStudentAttendance') }"
               >
                 View Student Attendance
               </router-link>
@@ -133,17 +134,18 @@ export default {
 <style scoped>
 .sidebar {
   background-color: #DBF4F8;
+  
   color: #000;
   position: fixed;
   top: 0;
   left: 0;
   overflow-y: auto;
   transition: transform 0.3s ease;
-  z-index: 999;
+  z-index: 1000;
   display: flex;
   flex-direction: column;
   padding-top: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5) !important;
 }
 
 .sidebar-hidden {
@@ -215,6 +217,25 @@ button {
 @media (max-width: 768px) {
   .sidebar {
     width: 100%;
+    height: auto;
+    position: fixed;
+    top: 0;
+    left: 0;
+    box-shadow: none;
+    z-index: 1000; /* Ensure sidebar is above other content */
+  }
+
+  .sidebar-hidden {
+    transform: translateY(-100%);
+  }
+
+  .sidebar-item {
+    padding: 10px;
+  }
+
+  .logout-icon {
+    position: relative;
+    bottom: auto;
   }
 }
 </style>
