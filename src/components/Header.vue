@@ -22,8 +22,7 @@
     </div>
 
     <!-- Account Information -->
-    <div class="account-info d-flex flex-column justify-content-center bg-light px-3 shadow-account"
-         style="height: 50px; width: 270px; border-radius: 20px;">
+    <div class="account-info d-flex flex-column justify-content-center bg-light px-3 shadow-account">
       <span class="fw-bold">LName, FName M.I.</span> 
       <span>202xxxxxxx@gordoncollege.edu.ph</span> 
     </div>
@@ -70,8 +69,10 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  height: 50px; 
+  width: 270px;
+  border-radius: 20px;
 }
-
 
 .shadow-account {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); 
@@ -87,5 +88,26 @@ span {
 
 .fw-bold {
   font-weight: bold;
+}
+
+@media (max-width: 576px) {
+  .account-info {
+    height: 50px; 
+    width: 50px; 
+    border-radius: 50%; 
+    padding: 0; 
+    justify-content: center;
+    align-items: center; 
+    text-align: center; 
+  }
+
+  .account-info span {
+    display: none;
+  }
+
+  .account-info::before {
+    content: "👤";
+    font-size: 2rem; 
+  }
 }
 </style>
