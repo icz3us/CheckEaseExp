@@ -5,9 +5,12 @@ import HomeView from '@/views/HomeView.vue';
 import StdntHomeView from '@/views/StdntHomeView.vue';
 import StdntClearanceView from '@/views/StdntClearanceView.vue';
 import StdntAttendanceView from '@/views/StdntAttendanceView.vue';
+import ViewStdntAttendance from '@/views/ViewStdntAttendance.vue';
+import ClearanceRecord from '@/views/ClearanceRecord.vue';
 import Login from '@/views/Login.vue'; 
 import SignUp from '@/views/SignUp.vue';
 import CreateClass from '@/views/CreateClass.vue';
+
 
 const routes = [
   {
@@ -43,6 +46,16 @@ const routes = [
     path: '/StudentAttendance',
     name: 'StudentAttendance',
     component: StdntAttendanceView,
+  },
+  {
+    path: '/ViewStudentAttendance',
+    name: 'StudentAttendanceCheck',
+    component: ViewStdntAttendance,
+  },
+  {
+    path: '/ClearanceRecord',
+    name: 'ClearanceRecord',
+    component: ClearanceRecord,
   },
   {
     path: '/Class',
