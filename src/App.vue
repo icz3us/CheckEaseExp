@@ -1,10 +1,10 @@
 <template>
   <div id="app" class="d-flex">
-    <AdminSidebar v-if="isHomeView || isClearanceView || isAttendanceView || isCreateClass" />
+    <AdminSidebar v-if="isHomeView || isClearanceView || isAttendanceView || isCreateClass || isViewStdntAttendance || isClearanceRecord" />
     <Sidebar v-else-if="!isAuthPage" />
     
     <div class="main-content flex-grow-3">
-      <AdminHeader v-if="isHomeView || isClearanceView || isAttendanceView || isCreateClass" />
+      <AdminHeader v-if="isHomeView || isClearanceView || isAttendanceView || isCreateClass || isViewStdntAttendance || isClearanceRecord" />
       <Header v-else-if="!isAuthPage" />
       
       <div class="container-fluid">
@@ -19,6 +19,7 @@ import Sidebar from './components/Sidebar.vue';
 import Header from './components/Header.vue';
 import AdminSidebar from './components/AdminSidebar.vue';
 import AdminHeader from './components/AdminHeader.vue';
+
 
 
 export default {
@@ -43,6 +44,12 @@ export default {
     },
     isCreateClass() {
       return this.$route.name === 'Class';
+    },
+    isViewStdntAttendance() {
+      return this.$route.name === 'StudentAttendanceCheck';
+    },
+    isClearanceRecord() {
+      return this.$route.name === 'ClearanceRecord';
     }
   }
 };
