@@ -1,10 +1,10 @@
 <template>
-  <div class="header-container position-flex top-0 end-30 fixed-top" style="margin-left: 250px;">
+  <div class="header-container">
     <!-- Main Card Header -->
     <div class="card header-card">
       <div class="card-body d-flex align-items-center justify-content-between">
         <!-- Dashboard Title -->
-        <h3 class="card-title mb-0">{{cardTitle}}</h3>
+        <h3 class="card-title mb-0 d-none d-sm-block"><b>{{ cardTitle }}</b></h3> 
 
         <!-- Profile Section -->
         <div class="profile-section d-flex align-items-center">
@@ -37,7 +37,7 @@
           <div class="user-info d-flex align-items-center">
             <i class="material-icons">account_circle</i>
             <div class="ms-2">
-              <strong>L.Name, Fname M.I.</strong><br>
+              <strong>L.Name, Fname M.I.</strong><br />
               <small>202xxxxxx@yourdomain.edu.ph</small>
             </div>
           </div>
@@ -49,11 +49,13 @@
 
 <script>
 export default {
-  name: "AdminHeader",
+  name: 'AdminHeader',
   computed: {
     cardTitle() {
       switch (this.$route.path) {
-        case '/clearance':
+        case '/clearance' :
+          return 'Clearance';
+        case '/ClearanceRecord':
           return 'Clearance';
         case '/attendance':
           return 'Attendance';
@@ -61,6 +63,8 @@ export default {
           return 'Dashboard';
         case '/class':
           return 'Create & View Class';
+        case '/ViewStudentAttendance':
+          return 'View Student Attendance';
         default:
           return 'Dashboard';
       }
@@ -86,21 +90,33 @@ export default {
 
 <style scoped>
 .header-container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 250px; /* Adjust based on sidebar width */
+  width: calc(100% - 250px); /* Adjust based on sidebar width */
   padding: 10px 20px;
-  width: 1308px; 
-  height: 124px; 
+  z-index: 1000;
+  transition: all 0.3s ease;
 }
 
 .header-card {
   background-color: #DBF4F8;
   border-radius: 15px;
   width: 100%;
-  height: 100%;
+  height: auto;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+.card-body {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
 .card-title {
-  font-weight: bold;
+  font-size: 1.5rem;
   color: black;
 }
 
@@ -128,5 +144,73 @@ export default {
   font-size: 36px;
   color: black;
   margin-right: 8px;
+}
+
+@media (max-width: 992px) {
+  .header-container {
+    left: 80px; /* Adjust based on collapsed sidebar width */
+    width: calc(100% - 80px); /* Adjust based on collapsed sidebar width */
+  }
+}
+
+@media (max-width: 768px) {
+  .card-title {
+    font-size: 1.25rem;
+  }
+
+  .profile-section {
+    font-size: 12px;
+  }
+
+  .user-info {
+    font-size: 12px;
+  }
+
+  .material-icons {
+    font-size: 20px;
+  }
+
+  .profile-section i.material-icons {
+    font-size: 20px;
+  }
+
+  .user-info i.material-icons {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 576px) {
+  .header-container {
+    left: 0;
+    width: 100%;
+    padding: 10px;
+    z-index: 999; /* Ensure header is below the hamburger menu */
+  }
+
+  .card-title {
+    display: none;
+  }
+
+  .profile-section {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .user-info {
+    font-size: 12px;
+    margin-top: 8px;
+  }
+
+  .material-icons {
+    font-size: 18px;
+  }
+
+  .profile-section i.material-icons {
+    font-size: 18px;
+  }
+
+  .user-info i.material-icons {
+    font-size: 28px;
+  }
 }
 </style>
